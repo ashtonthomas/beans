@@ -46,6 +46,8 @@ public class DesktopApp extends BillyBobApp {
 		this.appPlaceHistoryMapper = appPlaceHistoryMapper;
 		this.mainMenuView = mainMenuView;
 		this.contextMenuActivityMapper = contextMenuActivityMapper;
+		
+		// tell the event but that the shell can handle alert events
 		this.eventBus.addHandler(HeaderNotificationEvent.TYPE, shell);
 
 		

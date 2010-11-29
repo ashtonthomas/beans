@@ -9,7 +9,6 @@
 			<li>foo</li>
 			<li><a href="#">bad link</a></li>
 			<li><a href="#">a different menu</a></li>
-			<hr/>
 			<li><a href="#">bad link</a></li>
 
 		</ul>

@@ -30,7 +30,7 @@ public class SearchActivity extends AbstractActivity{
 	    options.add(imageSearch, ExpandMode.OPEN);
 	    
 	    final SearchControl control = new SearchControl(options);
-	    //control.execute("treehouse");
+	    control.execute("beans");
 	   
     
 		view.getContent().clear();
