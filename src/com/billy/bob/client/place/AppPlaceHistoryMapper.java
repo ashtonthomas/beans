@@ -17,13 +17,14 @@ public class AppPlaceHistoryMapper implements PlaceHistoryMapper{
 
 	private HomeFooPlace homePlace;
 	private BeanBarPlace beanPlace;
+	private SearchPlace searchPlace;
 
 	@Inject
-	public AppPlaceHistoryMapper(HomeFooPlace homePlace, BeanBarPlace beanPlace){
+	public AppPlaceHistoryMapper(HomeFooPlace homePlace, BeanBarPlace beanPlace, SearchPlace searchPlace){
 		
 		this.homePlace = homePlace;
 		this.beanPlace = beanPlace;
-
+		this.searchPlace = searchPlace;
 		
 	}
 
@@ -34,6 +35,8 @@ public class AppPlaceHistoryMapper implements PlaceHistoryMapper{
 			return homePlace;
 		}else if(token.startsWith("beans")){
 			return beanPlace;
+		}else if(token.startsWith("search")){
+			return searchPlace;
 		}
 		else{
 			return null;

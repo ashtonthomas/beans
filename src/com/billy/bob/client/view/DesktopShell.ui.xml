@@ -10,13 +10,8 @@
 	<div id="wrap">
 		<!-- Header -->
 		<div id="header">		
-			<h1 id="logo">GWT App</h1>		
-			<div id="searchform">	
-				<form method="post" class="search" action="#" >
-					<p><input name="search_query" class="textbox" type="text" />
-  					<input name="search" class="button" type="submit" value="search" /></p>
-				</form>
-			</div>
+			<h1 id="logo">Billy Bob's Beans</h1>		
+
 			
 		</div>
 		
@@ -53,7 +48,7 @@
 		<div id="footer">
 		
 			<p>   			
-			&copy; 2010 <strong>My App</strong> &nbsp;&nbsp; 
+			&copy; 2010 <strong>Billy Bob's Beautiful Beans</strong> &nbsp;&nbsp; 
 			Design by: <a href="http://www.styleshout.com/">styleshout</a> | 
 			Valid: <a href="http://validator.w3.org/check/referer">XHTML</a> | 
 			<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>

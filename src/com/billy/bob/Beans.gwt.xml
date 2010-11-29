@@ -16,6 +16,7 @@
   <inherits name="com.google.gwt.resources.Resources"/>
   <inherits name="com.google.gwt.text.Text"/>
   <inherits name="com.google.gwt.user.cellview.CellView" />
+  <inherits name='com.google.gwt.search.Search' />
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
@@ -23,6 +24,7 @@
   
   <public path="public"/>
 
+  <script src="http://www.google.com/uds/api?file=uds.js&amp;v=1.0&amp;gwt=1"/>
 
 
   <!-- Specify the app entry point class.                         -->

@@ -74,6 +74,10 @@
     <bean id="registerService" class="com.billy.bob.server.request.RegisterServiceImpl">
 		<property name="authorization" ref="authorization"/>
     </bean>
+    
+    <bean id="beanService" class="com.billy.bob.server.request.BeansServiceImpl">
+		<property name="beanDao" ref="beanDao"/>
+    </bean>
 </beans>
 
 <!--  PostgreSQL code

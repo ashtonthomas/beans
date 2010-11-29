@@ -5,6 +5,7 @@
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/gwt-maps.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/gwt-search.jar"/>
 	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/aopalliance.jar"/>
 	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/guice-2.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/gin-r137.jar"/>

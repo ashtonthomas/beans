@@ -13,6 +13,7 @@
 			<value>
 				/**/login.rpc=loginDispatcher
 				/**/register.rpc=registerDispatcher
+				/**/beans.rpc=beansDispatcher
 			</value>
 		</property>
 	</bean>
@@ -27,6 +28,12 @@
 	<bean id="registerDispatcher" class="com.billy.bob.server.request.GwtRpcDispatcher">
 		<property name="remoteService">
 			<ref bean="registerService"/>
+		</property>
+	</bean> 
+	
+	<bean id="beansDispatcher" class="com.billy.bob.server.request.GwtRpcDispatcher">
+		<property name="remoteService">
+			<ref bean="beanService"/>
 		</property>
 	</bean>  
  </beans>
