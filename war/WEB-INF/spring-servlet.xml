@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+<!-- 
+    Using Spring's MVC dispatcher pattern - maps the request through to a concrete controller instance
+    Just add the @RemoteServiceRelativePath("XXX.rpc") (from your GWT service proxy) mapping as 
+    below (like billing.rpc). Then create a new dispatcher instance for you service impl (see dispatchers
+    below).
+  -->
+
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>
+				/**/login.rpc=loginDispatcher
+				/**/register.rpc=registerDispatcher
+			</value>
+		</property>
+	</bean>
+
+	
+	<bean id="loginDispatcher" class="com.billy.bob.server.request.GwtRpcDispatcher">
+		<property name="remoteService">
+			<ref bean="loginService"/>
+		</property>
+	</bean>
+	
+	<bean id="registerDispatcher" class="com.billy.bob.server.request.GwtRpcDispatcher">
+		<property name="remoteService">
+			<ref bean="registerService"/>
+		</property>
+	</bean>  
+ </beans>

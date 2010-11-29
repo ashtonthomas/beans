@@ -1,0 +1,80 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+		
+	<ui:style field="style" src="main.css"/>		
+
+	<g:ScrollPanel height="100%" width="100%">
+	<g:HTMLPanel>
+	<!-- Wrap -->
+	<div id="wrap">
+		<!-- Header -->
+		<div id="header">		
+			<h1 id="logo">GWT App</h1>		
+			<div id="searchform">	
+				<form method="post" class="search" action="#" >
+					<p><input name="search_query" class="textbox" type="text" />
+  					<input name="search" class="button" type="submit" value="search" /></p>
+				</form>
+			</div>
+			
+		</div>
+		
+		<!-- menu -->
+		<div id="menu">
+				<g:SimplePanel ui:field="main_menu"></g:SimplePanel>
+
+		</div>	
+		
+		
+		<!--Content Wrap -->
+		<div id="content-wrap">
+			
+			<div id="right">
+							
+					<h1>Context Menu</h1>
+					<g:SimplePanel ui:field="context_menu"></g:SimplePanel>
+	
+				
+					<h1>Other Stuff</h1>
+					<g:SimplePanel ui:field="user_panel"></g:SimplePanel>
+				
+						
+			</div>
+		
+			<div id="main">	
+				<g:SimplePanel ui:field="content"></g:SimplePanel>
+			</div>
+		
+		<!--End content-wrap-->
+		</div>
+		
+		<!-- Footer -->
+		<div id="footer">
+		
+			<p>   			
+			&copy; 2010 <strong>My App</strong> &nbsp;&nbsp; 
+			Design by: <a href="http://www.styleshout.com/">styleshout</a> | 
+			Valid: <a href="http://validator.w3.org/check/referer">XHTML</a> | 
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+			
+			<a href="#">Home</a>&nbsp;|&nbsp;
+   		<a href="#">Sitemap</a>&nbsp;|&nbsp;
+   		<a href="#">RSS Feed</a> 			
+			</p>
+			
+		</div>	
+			
+<!-- END Wrap -->
+</div>
+			<div id="alert_wrapper">
+				<div id="alert">
+					
+				</div>
+			</div>
+	</g:HTMLPanel>
+	</g:ScrollPanel>
+
+</ui:UiBinder> 

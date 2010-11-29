@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+     default-autowire="byName">
+
+	<!-- enable autowire (optional) -->
+    <context:annotation-config />
+
+	<!-- enable transaction demarcation with annotations -->
+    <tx:annotation-driven />
+
+	<!-- in-memory database and a datasource -->
+    <jdbc:embedded-database id="dataSource">
+        <jdbc:script location="classpath:com/billy/bob/server/database/schema_hsql.sql"/>
+        <jdbc:script location="classpath:com/billy/bob/server/database/data.sql"/>
+    </jdbc:embedded-database>
+
+	<!-- transaction manager, use JtaTransactionManager for global tx -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!-- beware that mapper-config.xml is not needed if you use injected mappers -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!-- or you can scan for mappers and then inject them **also remove comments on annotation-->
+    <bean class="org.mybatis.spring.annotation.MapperScannerPostProcessor">
+        <property name="basePackage" value="com.billy.bob.server.domain.mapper" />
+    </bean>
+            
+    <!-- **************************************************** -->
+    <!-- **************** DAO Injections *******************-->
+    <!-- **************************************************** -->
+    
+    
+	<!--  userMapper should be created by scanning annotations and using the given name -->
+    <bean id="userDao" class="com.billy.bob.server.domain.dao.UserDaoImpl">
+        <property name="userMapper" ref="userMapper" />
+    </bean>
+    
+    <bean id="beanDao" class="com.billy.bob.server.domain.dao.BeanDaoImpl">
+        <property name="beanMapper" ref="beanMapper" />
+    </bean>
+     
+    
+    <!-- **************************************************** -->
+    <!-- *************     Support Modules      **************-->
+    <!-- **************************************************** --> 
+    
+    <bean id="authorization" class="com.billy.bob.server.module.auth.Authorization">
+    	<property name="userDao" ref="userDao"/>
+    </bean>             
+    <!-- **************************************************** -->
+    <!-- ************* Service Injections **************-->
+    <!-- **************************************************** -->
+ 
+    
+    <bean id="loginService" class="com.billy.bob.server.request.LoginServiceImpl">
+		<property name="authorization" ref="authorization"/>
+    </bean>
+    
+    <bean id="registerService" class="com.billy.bob.server.request.RegisterServiceImpl">
+		<property name="authorization" ref="authorization"/>
+    </bean>
+</beans>
+
+<!--  PostgreSQL code
+
+
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<constructor-arg>
+		<ref bean="datasource" />
+	</constructor-arg>
+</bean>
+	
+		<bean id="individualincrementer" class="org.springframework.jdbc.support.incrementer.PostgreSQLSequenceMaxValueIncrementer">
+		<constructor-arg>
+		<ref bean="datasource" />
+		</constructor-arg>
+		<constructor-arg><value>book_id_seq</value> </constructor-arg>
+		</bean>
+		<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost/library" />
+		<property name="username" value="postgres" />
+		<property name="password" value="" />
+		</bean>
+		
+ -->
+
+<!--  MySQL code
+
+<bean id="individualincrementer" class="org.springframework.jdbc.support.incrementer.MySQLMaxValueIncrementer">
+	<constructor-arg>
+		<ref bean="datasource" />
+	</constructor-arg>
+	<constructor-arg>
+		<value>individual_sequence</value>
+	</constructor-arg>
+	<constructor-arg>
+		<value>value</value>
+	</constructor-arg>
+</bean>
+
+
+<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	<property name="url" value="jdbc:mysql://127.0.0.1/acrinta-fitness-dev" />
+	<property name="username" value="root" />
+	<property name="password" value="" />
+</bean>
+
+ -->

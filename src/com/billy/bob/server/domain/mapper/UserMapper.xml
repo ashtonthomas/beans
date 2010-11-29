@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.billy.bob.server.domain.User">
+
+
+    <insert id="insertUser" parameterType="com.billy.bob.server.domain.User" useGeneratedKeys="true" keyProperty="id">
+    	insert into users (email, password_hash) values (#{email}, #{passwordHash})
+    </insert>
+        
+    <update id="updateUser" parameterType="com.billy.bob.server.domain.User">
+    	update users set
+    		email = #{email},
+    		password_hash = #{passwordHash}
+    	where id = #{id}
+    </update>
+    
+    <delete id="deleteUser" parameterType="int">
+    	delete from users where id = #{id}
+    </delete>
+    
+    <select id="getUserById" resultType="com.billy.bob.server.domain.User" parameterType="int">
+        select * from users where id=#{value}
+    </select>
+    
+    <select id="getUserByEmail" resultType="com.billy.bob.server.domain.User" parameterType="java.lang.String">
+        select * from users where email=#{value}
+    </select>
+    
+    <select id="getUserByPasswordHash" resultType="com.billy.bob.server.domain.User" parameterType="java.lang.String">
+        select * from users where password_hash=#{value}
+    </select>
+    
+    <select id="getNumUsers" resultType="int">
+    	select count(*) from users
+    </select>
+    
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='beans'>
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+
+
+  <!-- Other module inherits                                      -->
+  <!-- We need the MVP stuff (Activity and Place	   -->
+  <!-- I am also using DepInj with Gin (Inject)	   -->
+  <!-- and Resource for client bundle and stuff (not used yet)	  -->
+  <!--  and also Maps for the location stuff	   -->
+  <inherits name="com.google.gwt.activity.Activity"/>
+  <inherits name="com.google.gwt.place.Place"/>
+  <inherits name="com.google.gwt.inject.Inject"/>
+  <inherits name="com.google.gwt.resources.Resources"/>
+  <inherits name="com.google.gwt.text.Text"/>
+  <inherits name="com.google.gwt.user.cellview.CellView" />
+
+  <!-- Specify the paths for translatable code                    -->
+  <source path='client'/>
+  <source path='shared'/>
+  
+  <public path="public"/>
+
+
+
+  <!-- Specify the app entry point class.                         -->
+  <entry-point class='com.billy.bob.client.application.Beans'/>
+
+</module>

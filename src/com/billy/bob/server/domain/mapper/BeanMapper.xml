@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.billy.bob.server.domain.Bean">
+
+
+    <insert id="insertBean" parameterType="com.billy.bob.server.domain.Bean" useGeneratedKeys="true" keyProperty="id">
+    	insert into beans (name) values (#{name})
+    </insert>
+        
+    <update id="updateBean" parameterType="com.billy.bob.server.domain.Bean">
+    	update beans set
+    		name = #{name},
+    	where id = #{id}
+    </update>
+    
+    <delete id="deleteBean" parameterType="int">
+    	delete from beans where id = #{id}
+    </delete>
+    
+    <select id="getBeanById" resultType="com.billy.bob.server.domain.Bean" parameterType="int">
+        select * from beans where id=#{value}
+    </select>
+    
+    <select id="getBeanByName" resultType="com.billy.bob.server.domain.Bean" parameterType="java.lang.String">
+        select * from beans where name=#{value}
+    </select>
+
+    
+    <select id="getNumBeans" resultType="int">
+    	select count(*) from beans
+    </select>
+    
+</mapper>

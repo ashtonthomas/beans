@@ -1,0 +1,5 @@
+A simple application used to demonstrate base Google Web Toolkit applications. 
+
+This application users Spring based backend with MyBatis data mapper and an in-memory database
+
+The frontend is GWT with MVP/Activities, Dependency Injection with Gin, Event Bus, UiBinder, Events, Gwt-Rpc, etc

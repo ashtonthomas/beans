@@ -1,0 +1,19 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:HTMLPanel height="500px" width="350px">
+		<center><h3>Register with Acrinta FITNESS</h3></center>
+		<center><g:Label ui:field="message"></g:Label> </center>
+		<br/>
+		Email: <g:TextBox ui:field="email"></g:TextBox><br/>
+		Password: <g:PasswordTextBox ui:field="password"></g:PasswordTextBox><br/>
+		Confirm Password: <g:PasswordTextBox ui:field="password_confirm"></g:PasswordTextBox><br/>
+		<g:Button ui:field="register_button"></g:Button>
+		<g:Button ui:field="cancel_button"></g:Button>
+	</g:HTMLPanel>
+</ui:UiBinder> 
