@@ -1,5 +1,7 @@
 package com.billy.bob.client.view.widgets;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.user.client.ui.Label;
@@ -18,6 +20,12 @@ public class RegisterWidget extends PopupPanel {
 	      this.view = view;
 	      view.getRegisterButton().setText("Register");
 	      view.getCancelButton().setText("Cancel");
+	      
+	      view.getCancelButton().addClickHandler(new ClickHandler(){
+	    	  public void onClick(ClickEvent event){
+	    		  closeRegister();
+	    	  }
+	      });
 
 	      // PopupPanel is a SimplePanel, so you have to set it's widget property to
 	      // whatever you want its contents to be.
@@ -28,5 +36,9 @@ public class RegisterWidget extends PopupPanel {
 		view.getPasswordBox().setText("");
 		view.getPasswordConfirmBox().setText("");
 		view.getEmailBox().setText("");
+	}
+	
+	public void closeRegister(){
+		this.hide();
 	}
 }

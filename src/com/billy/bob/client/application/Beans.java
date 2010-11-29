@@ -99,12 +99,17 @@ public class Beans implements EntryPoint {
 	class RegisterButtonHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 			registerButton.setEnabled(false);
+			button.setEnabled(false);
+			
 			registerWidget.addCloseHandler(new CloseHandler<PopupPanel>(){
 				public void onClose(CloseEvent<PopupPanel> event) {
 					registerButton.setEnabled(true);
+					button.setEnabled(true);
 				}
 				
 			});
+			
+			
 			registerWidget.center();
 		}
 		
